@@ -2,8 +2,8 @@
 # 核心配置
 # ========================
 title: 我的知识库
-baseurl: ""
-url: ""
+baseurl: "/myblog"
+url: "https://zhurongxiao.github.io"
 timezone: Asia/Shanghai
 lang: zh-CN
 encoding: utf-8
