@@ -1,20 +1,17 @@
 <nav class="navbar">
-    <div class="container">
-      <a href="{{ '/' | relative_url }}" class="logo">
-        <i class="fas fa-book"></i> {{ site.title }}
-      </a>
-  
-      <div class="nav-links">
-        {% for item in site.data.navigation %}
-          <a href="{{ item.url | relative_url }}" 
-             {% if page.url == item.url %}class="active"{% endif %}>
-            <i class="{{ item.icon }}"></i> {{ item.name }}
-          </a>
-        {% endfor %}
-      </div>
-  
-      <button class="mobile-menu" aria-label="菜单">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </nav>
+  <a href="{{ site.baseurl }}/" class="logo">
+    <i class="fas fa-book"></i> 我的知识库
+  </a>
+
+  <button class="mobile-menu" aria-label="菜单" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="{{ site.baseurl }}/">首页</a>
+    <a href="{{ site.baseurl }}/rust/">Rust</a>
+    <a href="{{ site.baseurl }}/search/">搜索</a>
+    <a href="{{ site.baseurl }}/shell/"><i class="fas fa-terminal"></i> Shell</a>
+    <a href="{{ site.baseurl }}/mac/"><i class="fab fa-apple"></i> Mac</a>
+  </div>
+</nav>

@@ -1,6 +1,0 @@
-
-@use "minima" with (
-  $grey-color-light: color.scale(minima.$grey-color, $lightness: 40%),
-  $grey-color-dark:  color.scale(minima.$grey-color, $lightness: -25%)
-);
-@forward "minima";

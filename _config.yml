@@ -11,7 +11,6 @@ encoding: utf-8
 # ========================
 # Jekyll设置
 # ========================
-theme: minima
 markdown: kramdown
 highlighter: rouge
 future: true
@@ -55,21 +54,14 @@ custom_categories:
   - name: Mac
     path: /mac/
     icon: fab fa-apple
+  - name: Gather
+    path: /gather/
+    icon: fa-solid fa-toolbox
 
 # ========================
 # 默认值
 # ========================
 defaults:
-  - scope:
-      path: ""
-    values:
-      layout: default
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
-      toc: true
   - scope:
       type: posts
       categories: rust

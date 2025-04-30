@@ -1,0 +1,27 @@
+<script>
+    const nav = document.getElementById("navLinks");
+    const toggleBtn = document.querySelector(".mobile-menu");
+  
+    function toggleMenu() {
+      nav.classList.toggle("active");
+    }
+  
+    document.addEventListener("click", function (event) {
+      const isClickInsideNav = nav.contains(event.target);
+      const isClickToggle = toggleBtn.contains(event.target);
+      if (!isClickInsideNav && !isClickToggle) {
+        nav.classList.remove("active");
+      }
+    });
+  
+    nav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          nav.classList.remove("active");
+        }
+      });
+    });
+  </script>
+  
+  <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
+  

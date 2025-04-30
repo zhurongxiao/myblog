@@ -1,0 +1,13 @@
+<aside class="category-sidebar">
+    <h3><i class="fas fa-folder-open"></i> 分类</h3>
+    <ul>
+      {% for category in site.custom_categories %}
+        <li>
+          <a href="{{ category.path | relative_url }}">
+            <i class="{{ category.icon }}"></i> {{ category.name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </aside>
+  

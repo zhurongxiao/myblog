@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 # 核心组件
 gem "jekyll", "~> 4.3.3"  # 锁定稳定版本
-gem "minima", "~> 2.5.1"
 gem "kramdown", "~> 2.4.0"
 gem "rouge", "~> 4.2.0"
 
