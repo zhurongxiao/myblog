@@ -1,0 +1,90 @@
+# ========================
+# 核心配置
+# ========================
+title: 我的知识库
+baseurl: ""
+url: ""
+timezone: Asia/Shanghai
+lang: zh-CN
+encoding: utf-8
+
+# ========================
+# Jekyll设置
+# ========================
+theme: minima
+markdown: kramdown
+highlighter: rouge
+future: true
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+
+# ========================
+# 插件配置 (GitHub Pages官方支持)
+# ========================
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-relative-links
+  - jekyll-paginate
+
+# ========================
+# 集合配置
+# ========================
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:title/
+  search:
+    output: true
+    permalink: /search/
+
+# ========================
+# 分类配置
+# ========================
+custom_categories:
+  - name: Rust
+    path: /rust/
+    icon: fas fa-code
+  - name: Shell
+    path: /shell/
+    icon: fas fa-terminal
+  - name: Mac
+    path: /mac/
+    icon: fab fa-apple
+
+# ========================
+# 默认值
+# ========================
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      toc: true
+  - scope:
+      type: posts
+      categories: rust
+    values:
+      rust_version: "1.70.0"
+
+# ========================
+# 技术优化
+# ========================
+kramdown:
+  syntax_highlighter_opts:
+    css_class: "highlight"
+    block:
+      line_numbers: false
+
+sass:
+  style: compressed
+  sourcemap: never

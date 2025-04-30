@@ -1,0 +1,47 @@
+<!-- 在 </head> 前添加 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr-languages/1.4.0/lunr.stemmer.support.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr-languages/1.4.0/lunr.zh.min.js"></script>
+
+<style>
+    /* 高亮外框 */
+    .highlight {
+      background: #f6f8fa;
+      border-radius: 6px;
+      padding: 1em;
+      overflow-x: auto;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    /* Rouge 支持的颜色高亮基础（类似 github） */
+    .highlight .k    { color: #d73a49; }  /* 关键字 */
+    .highlight .nb   { color: #005cc5; }  /* 类型名（例如 String） */
+    .highlight .nf   { color: #6f42c1; }  /* 函数名 */
+    .highlight .s    { color: #032f62; }  /* 字符串 */
+    .highlight .p    { color: #24292e; }  /* 标点 */
+    .highlight .c1   { color: #6a737d; font-style: italic; } /* 注释 */
+    .highlight .nn   { color: #e36209; }  /* 模块名 */
+    .highlight .n    { color: #24292e; }  /* 标识符 */
+    .highlight .o    { color: #d73a49; }  /* 运算符 */
+    
+    /* 行号（你虽然禁用了，保留样式备用） */
+    .rouge-gutter {
+      color: #999;
+      background-color: #f8f8f8;
+      text-align: right;
+      padding: 0 10px;
+      vertical-align: top;
+      user-select: none;
+    }
+    .rouge-code {
+      padding-left: 10px;
+    }
+    .rouge-table {
+      border-spacing: 0;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    </style>
+    

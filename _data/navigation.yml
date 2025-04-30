@@ -1,0 +1,12 @@
+- name: 首页
+  url: /
+  icon: fas fa-home
+- name: Rust
+  url: /rust/
+  icon: fas fa-code
+- name: Shell
+  url: /shell/
+  icon: fas fa-terminal
+- name: Mac
+  url: /mac/
+  icon: fab fa-apple

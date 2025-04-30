@@ -1,0 +1,24 @@
+/github_page
+├── _config.yml          # Jekyll 配置文件
+├── _data/
+│   └── navigation.yml   # 导航菜单配置
+├── _includes/
+│   ├── head.html        # 头部通用代码
+│   ├── navbar.html      # 导航栏组件
+│   └── footer.html      # 页脚组件
+├── _layouts/
+│   ├── default.html     # 基础布局模板
+│   └── category.html    # 分类页面专用模板
+├── _sass/               # SCSS 样式文件
+│   └── custom.scss      # 自定义样式
+├── assets/
+│   ├── css/
+│   │   └── style.scss   # 主样式文件
+│   └── js/
+│       ├── search.js    # 搜索功能
+│       └── main.js      # 通用JS
+├── rust/                # Rust文档（保持你原有结构）
+├── shell/               # Shell文档
+├── mac/                 # Mac文档
+├── index.md             # 主页
+└── 404.md               # 404页面

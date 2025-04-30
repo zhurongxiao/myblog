@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<ul class="post-list">
+  {% assign category_slug = page.title | split: ' ' | first | downcase %}
+  {% for post in site.posts %}
+    {% if post.categories contains category_slug %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

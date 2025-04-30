@@ -1,0 +1,25 @@
+---
+layout: default
+title: 搜索
+permalink: /search/
+---
+
+<h1>搜索文章</h1>
+
+<input type="text" id="search-input" placeholder="输入关键词..." />
+<ul id="results-container"></ul>
+
+<!-- 引入 Simple-Jekyll-Search -->
+<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script>
+
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '{{ "/search.json" | relative_url }}',
+    searchResultTemplate: '<li><a href="{url}">{title}</a> <span>({date})</span></li>',
+    noResultsText: '没有找到相关内容',
+    limit: 10,
+    fuzzy: false
+  });
+</script>
