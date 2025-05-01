@@ -2,15 +2,7 @@
 <html lang="zh-CN">
   <head>
     {% include head.html %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rouge/3.26.0/themes/github.min.css">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-
-
   </head>
-
   <body>
     {% include navbar.html %}
 
@@ -23,5 +15,6 @@
 
     {% include footer.html %}
     {% include scripts.html %}
+    <script src="{{ '/assets/js/copy.js' | relative_url }}"></script>
   </body>
 </html>
