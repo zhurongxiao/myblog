@@ -40,8 +40,8 @@ main {
   border-bottom: 1px solid #eaeaea;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .navbar-fixed {
@@ -54,6 +54,14 @@ main {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* 主行：logo + 菜单按钮 */
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 .navbar .logo {
   font-size: 1.3rem;
   font-weight: bold;
@@ -61,10 +69,20 @@ main {
   text-decoration: none;
 }
 
+.navbar .mobile-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* 横排导航链接 */
 .navbar .nav-links {
   display: flex;
   gap: 1.5rem;
-  transition: all 0.3s ease-in-out;
+  margin-top: 1rem;
 }
 
 .navbar .nav-links a {
@@ -78,14 +96,7 @@ main {
   color: #007acc;
 }
 
-.mobile-menu {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #333;
-}
+
 
 /* ========== 分类侧边栏 ========== */
 .category-sidebar {
@@ -190,60 +201,39 @@ pre {
 
 /* ========== 响应式样式 ========== */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
+  .navbar {
+    align-items: stretch;
     padding: 1rem;
   }
 
-  .category-sidebar,
-  .sidebar-fixed {
-    width: 100%;
-    position: static;
-    height: auto;
-    margin-bottom: 1.5rem;
+  .navbar-inner {
+    flex-direction: row;
   }
 
-  main {
-    margin-left: 0;
-    max-width: none;
-    width: 100%;
-  }
-
-  /* REMOVE THIS LINE */
-  /* .navbar-fixed {
-    position: static;
-  } */
-
-  body {
-    padding-top: 0;
-  }
-
-  .nav-links {
+  .navbar .nav-links {
     display: none;
-    position: fixed; /* 改为固定定位覆盖内容 */
+    position: fixed;
     top: 60px;
     left: 0;
     width: 100%;
-    padding: 1rem;
-    background: white;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    z-index: 999;
-  }
-
-  /* 激活状态显示 */
-  .nav-links.active {
-    display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding: 1rem;
+    background: white;
+    z-index: 999;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
 
-  /* 防止滚动穿透 */
+  .navbar .nav-links.active {
+    display: flex;
+  }
+
+  .navbar .mobile-menu {
+    display: block;
+  }
+
   body.menu-open {
     overflow: hidden;
     height: 100vh;
-  }
-
-  .mobile-menu {
-    display: block;
   }
 }
