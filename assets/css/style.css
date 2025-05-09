@@ -236,4 +236,15 @@ pre {
     overflow: hidden;
     height: 100vh;
   }
+
+  /* 隐藏侧边栏 */
+  .category-sidebar,
+  .sidebar-fixed {
+    display: none !important;
+  }
+
+  main {
+    margin-left: 0;
+    width: 100%;
+  }
 }
