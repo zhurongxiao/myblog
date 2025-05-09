@@ -9,6 +9,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f5f5f5;
   color: #333;
+  padding-top: 60px; /* 为固定导航栏预留空间 */
 }
 
 /* ========== 布局容器 ========== */
@@ -19,17 +20,18 @@ body {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  flex-wrap: wrap;
 }
 
+/* ========== 主内容区域 ========== */
 main {
   flex-grow: 1;
   max-width: 800px;
-  margin: 0 auto;
-  background: #fff;
+  margin-left: 250px; /* 侧边栏宽度 */
   padding: 2rem;
+  background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.03);
+  transition: margin 0.3s ease;
 }
 
 /* ========== 顶部导航栏 ========== */
@@ -40,7 +42,16 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+}
+
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .navbar .logo {
@@ -79,11 +90,22 @@ main {
 /* ========== 分类侧边栏 ========== */
 .category-sidebar {
   width: 200px;
-  flex-shrink: 0;
   background: #fff;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-fixed {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  z-index: 500;
+  background: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
 .category-sidebar h3 {
@@ -135,7 +157,7 @@ pre, code {
 }
 
 pre {
-  position: relative; /* ⬅ 关键 */
+  position: relative;
   background: #f8f8f8;
   padding: 1rem;
   overflow: auto;
@@ -166,8 +188,6 @@ pre {
   border-color: green;
 }
 
-
-
 /* ========== 响应式样式 ========== */
 @media (max-width: 768px) {
   .container {
@@ -175,34 +195,55 @@ pre {
     padding: 1rem;
   }
 
-  .category-sidebar {
+  .category-sidebar,
+  .sidebar-fixed {
     width: 100%;
+    position: static;
+    height: auto;
     margin-bottom: 1.5rem;
+  }
+
+  main {
+    margin-left: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  /* REMOVE THIS LINE */
+  /* .navbar-fixed {
+    position: static;
+  } */
+
+  body {
+    padding-top: 0;
   }
 
   .nav-links {
     display: none;
-    flex-direction: column;
-    background: #fff;
-    position: absolute;
-    top: 64px;
-    right: 1rem;
-    border: 1px solid #ddd;
+    position: fixed; /* 改为固定定位覆盖内容 */
+    top: 60px;
+    left: 0;
+    width: 100%;
     padding: 1rem;
-    z-index: 10;
+    background: white;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    z-index: 999;
   }
 
+  /* 激活状态显示 */
   .nav-links.active {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* 防止滚动穿透 */
+  body.menu-open {
+    overflow: hidden;
+    height: 100vh;
   }
 
   .mobile-menu {
     display: block;
-  }
-
-  main {
-    width: 100%;
-    max-width: none;
-    margin: 0;
   }
 }
