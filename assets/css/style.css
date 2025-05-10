@@ -12,6 +12,62 @@ body {
   padding-top: 60px; /* 为固定导航栏预留空间 */
 }
 
+/* ========== Markdown 表格增强样式 ========== */
+/* assets/css/style.css */
+.markdown-table {
+  /* 基础样式 */
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+  
+  /* 容错处理 */
+  white-space: pre-wrap;    /* 保留原始空格 */
+  font-family: monospace;   /* 等宽字体对齐 */
+  table-layout: fixed;      /* 防止内容溢出 */
+}
+
+/* 表头/单元格样式 */
+.markdown-table th,
+.markdown-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e1e1e1;
+  min-width: 100px;         /* 防止内容挤压 */
+  word-break: break-word;   /* 长内容自动换行 */
+}
+
+/* 表头特殊样式 */
+.markdown-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  position: sticky;
+  top: 0;                   /* 固定表头（可选） */
+}
+
+/* 交互效果 */
+.markdown-table tr:hover td {
+  background-color: #f5f5f5;
+}
+
+/* 针对复制粘贴的容错处理 */
+.markdown-table :is(td, th) {
+  overflow: visible;        /* 显示溢出内容 */
+}
+
+/* 修复 Markdown 转换可能缺失的边框 */
+.markdown-table :is(td, th):not(:last-child) {
+  border-right: 1px solid #f0f0f0;
+}
+
+/* 强制修复错位表格的视觉对齐 */
+.markdown-table tr > *:first-child {
+  padding-left: 1.5em;      /* 首列缩进 */
+}
+.markdown-table tr > *:last-child {
+  padding-right: 1.5em;     /* 末列缩进 */
+}
+
 /* ========== 布局容器 ========== */
 .container {
   display: flex;
@@ -247,4 +303,15 @@ pre {
     margin-left: 0;
     width: 100%;
   }
+
+  .markdown-table {
+    display: block;
+    overflow-x: auto;       /* 横向滚动 */
+    white-space: nowrap;    /* 防止换行 */
+  }
+  
+  .markdown-table td {
+    min-width: 150px;       /* 移动端最小宽度增大 */
+  }
 }
+
