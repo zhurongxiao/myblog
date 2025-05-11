@@ -7,10 +7,17 @@ categories: rust
 ---
 ```yml
 为什么编译器没报类型不匹配错？怎么 std::io::Error 自动变成了 BinanceError？
-```
+```  
 
-- 答案是：你实现了 From<std::io::Error> for BinanceError！
-  
+---
+- 答案是：你实现了 From<std::io::Error> for BinanceError  
+
+<br>
+```rust 
+#[error("IO 错误: {0}")]
+Io(#[from] IoError),
+```
+---  
 > Rust 的 ? 操作符要求错误类型之间存在以下一种关系：
 <table class="markdown-table">
   <thead>
