@@ -1,7 +1,7 @@
 # ========================
 # 核心配置
 # ========================
-title: 我的知识库
+title: My Knowledge Base
 baseurl: "/myblog"
 url: "https://zhurongxiao.github.io"
 timezone: Asia/Shanghai
@@ -47,7 +47,7 @@ collections:
 custom_categories:
   - name: Rust
     path: /rust/
-    icon: fas fa-code
+    icon: fa-brands fa-rust
   - name: Shell
     path: /shell/
     icon: fas fa-terminal
@@ -57,7 +57,9 @@ custom_categories:
   - name: Gather
     path: /gather/
     icon: fa-solid fa-toolbox
-
+  - name: Life
+    path: /life/
+    icon: fa-solid fa-heart-pulse
 # ========================
 # 默认值
 # ========================

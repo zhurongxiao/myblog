@@ -1,9 +1,9 @@
 ---
 layout: default
-title: 首页
+title: Home 
 ---
 
-# 欢迎来到知识库
+# Welcome to the Knowledge Base
 
 <div class="category-grid">
   {% for category in site.custom_categories %}
@@ -15,7 +15,7 @@ title: 首页
           <li><a href="{{ doc.path | relative_url }}">{{ doc.basename }}</a></li>
         {% endfor %}
       </ul>
-      <a href="{{ category.path | relative_url }}" class="see-all">查看全部</a>
+      <a href="{{ category.path | relative_url }}" class="see-all">Read all</a>
     </div>
   {% endfor %}
 </div>
