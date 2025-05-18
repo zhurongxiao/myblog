@@ -60,6 +60,9 @@ custom_categories:
   - name: Life
     path: /life/
     icon: fa-solid fa-heart-pulse
+  - name: Mixed
+    path: /mixed/
+    icon: fa-solid fa-pencil
 # ========================
 # 默认值
 # ========================
