@@ -21,7 +21,7 @@ categories: rust
 | 并发访问  | 不阻塞，立即完成        | 同时只能有一个线程访问              |
 | 适合场景  | 计数器、自增器、索引轮询等   | 多字段结构/复杂数据               |
 | 用法复杂度 | 稍复杂，需要指定内存一致性顺序 | 简单，直接 `.lock().unwrap()` |
-
+{:.markdown-table}
 ---
 
 ## 模拟数据代入：轮询账号索引
@@ -53,7 +53,7 @@ let index = ACCOUNT_INDEX.fetch_add(1, Ordering::Relaxed) % 3;
 | 第一次  | 1 → 2             | 1       | accounts\[1] |
 | 第二次  | 2 → 3             | 2       | accounts\[2] |
 | 第三次  | 3 → 4             | 0       | accounts\[0] |
-
+{:.markdown-table}
 **特点：**
 
 * 线程安全
@@ -83,7 +83,7 @@ let index = *guard;
 | 第一次  | 1             | 1       | accounts\[1] |
 | 第二次  | 2             | 2       | accounts\[2] |
 | 第三次  | 0             | 0       | accounts\[0] |
-
+{:.markdown-table}
 **特点：**
 
 * 正确但有锁
@@ -126,7 +126,7 @@ Mutex<usize> (有锁)
 | 需要锁住结构体多个字段更新 | `Mutex ✅`          |
 | 单线程程序         | `Cell/RefCell` 更轻量 |
 | 不清楚是否并发       | `Mutex` 更保守安全      |
-
+{:.markdown-table}
 ---
 
 ## 示例推荐：`AtomicUsize` 轮询账号
@@ -149,4 +149,14 @@ let account = &ACCOUNTS[index];
 * `Mutex` 更适合锁住复合结构体的完整访问
 * 如果你只是在 CLI 工具中轮询账号，推荐使用 `AtomicUsize`
 
+### 原子计数，每分钟输出日志
+static LOG_COUNTER: AtomicUsize = AtomicUsize::new(0);
+
+fn check_close_condition(...) -> Result<bool, BinanceError> {
+    let count = LOG_COUNTER.fetch_add(1, Ordering::Relaxed);
+    if count % 6 == 0 {
+        info!("...");
+    }
+    ...
+}
 
