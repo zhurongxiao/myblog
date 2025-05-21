@@ -150,6 +150,7 @@ let account = &ACCOUNTS[index];
 * 如果你只是在 CLI 工具中轮询账号，推荐使用 `AtomicUsize`
 
 ### 原子计数，每分钟输出日志
+```rust
 static LOG_COUNTER: AtomicUsize = AtomicUsize::new(0);
 
 fn check_close_condition(...) -> Result<bool, BinanceError> {
@@ -159,4 +160,4 @@ fn check_close_condition(...) -> Result<bool, BinanceError> {
     }
     ...
 }
-
+```

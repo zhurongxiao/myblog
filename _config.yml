@@ -82,7 +82,6 @@ kramdown:
     css_class: "highlight"
     block:
       line_numbers: false
-
 sass:
   style: compressed
   sourcemap: never
