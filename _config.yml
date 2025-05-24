@@ -29,6 +29,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-relative-links
   - jekyll-paginate
+  # - jekyll-spaceship
 
 # ========================
 # 集合配置
