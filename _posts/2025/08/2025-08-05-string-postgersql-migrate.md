@@ -25,11 +25,13 @@ sudo -u postgres psql
 
 - 1. Backup Your Database on the Old Server
   -   On old server, dump the database
-```shell
- 
-pg_dump -U postgres -h localhost -Fc -f strapi_backup.dump strapi_db
 
+
+```shell
+pg_dump -U postgres -h localhost -Fc -f strapi_backup.dump strapi_db
 ```
+  
+
 
 - pg_dump -Fc creates a custom-format binary dump (.dump file)
 
@@ -53,5 +55,21 @@ sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE strapi_db TO strapi_u
 ```shell
 pg_restore -U postgres -h localhost -d strapi_db -Fc strapi_backup.dump
 ```
+  
+### Replenish
 
+- Delete database
+```
+  sudo -u postgres dropdb strapi_db
+```
 
+  
+- Create database
+```
+  sudo -u postgres psql -c "CREATE DATABASE strapi_db;"
+```
+  
+- Qyery database
+```
+  sudo -u postgres psql -d strapi_db -c "\dt"
+```
