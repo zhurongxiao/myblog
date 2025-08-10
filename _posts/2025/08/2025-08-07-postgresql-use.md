@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Strapi and PostgerSQL migrate "
+title: "PostgerSQL Operation Guide"
 date: 2025-08-05 14:42:00 +0800
 categories: gather
 ---
