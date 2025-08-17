@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Strapi and PostgerSQL migrate "
+title: " PostgerSQL migrate "
 date: 2025-08-05 14:42:00 +0800
 categories: gather
 ---
@@ -28,7 +28,7 @@ sudo -u postgres psql
 
 
 ```shell
-pg_dump -U postgres -h localhost -Fc -f strapi_backup.dump strapi_db
+pg_dump -U postgres -h localhost -Fc -f user_comments.dump user_comments
 ```
   
 
@@ -36,7 +36,7 @@ pg_dump -U postgres -h localhost -Fc -f strapi_backup.dump strapi_db
 - pg_dump -Fc creates a custom-format binary dump (.dump file)
 
 ```shell
-scp strapi_backup.dump new-sever@xxx/home/
+scp user_comments.dump new-sever@xxx/home/
 ````
 
 ### Restore on new server
@@ -45,9 +45,9 @@ scp strapi_backup.dump new-sever@xxx/home/
 
 ```shell
 # Create database and user
-sudo -u postgres psql -c "CREATE DATABASE strapi_db;"
-sudo -u postgres psql -c "CREATE USER strapi_user WITH PASSWORD 'secure_password';"
-sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE strapi_db TO strapi_user;"
+sudo -u postgres psql -c "CREATE DATABASE user_comments;"
+sudo -u postgres psql -c "CREATE USER app_user WITH PASSWORD 'secure_password';"
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE user_comments TO app_user;"
 ```
 
 - Restore using the file you just uploaded
@@ -73,3 +73,12 @@ pg_restore -U postgres -h localhost -d strapi_db -Fc strapi_backup.dump
 ```
   sudo -u postgres psql -d strapi_db -c "\dt"
 ```
+
+### Do not clear the database, only overwrite the data (advanced usage)
+- If you cannot delete the database (e.g. in a production environment), you can use the --clean option:
+
+```
+pg_restore -U postgres -h localhost --clean -d user_comments -Fc user_comments.dump
+```
+  
+- --clean | Delete the object before creating it

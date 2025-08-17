@@ -6,6 +6,45 @@ categories: gather
 
 ---
 
+If you want to **completely discard all local changes** and reset your branch to match the **latest remote version (`origin/main`)**, you should use:  
+
+### **`git reset --hard origin/main`**  
+
+### What this does:
+1. **Discards all local changes** (unstaged, staged, and even commits not pushed yet).  
+2. **Forces your local branch** to exactly match `origin/main`.  
+
+### Steps:
+```bash
+# 1. Fetch the latest changes from remote (you already did this)
+git fetch origin
+
+# 2. Reset your local branch to match origin/main (DANGER: LOSES ALL LOCAL CHANGES)
+git reset --hard origin/main
+```
+### ⚠️ **WARNING**:  
+- This **permanently deletes** all uncommitted changes and any local commits not on `origin/main`.  
+- If you have important uncommitted work, **stash or commit it first**:
+  ```bash
+  git stash  # Temporarily saves changes
+  git reset --hard origin/main
+  git stash pop  # Brings changes back (if needed)
+  ```
+
+### Alternative (Safer):
+If you just want to **update your branch** but keep working changes, use:
+```bash
+git pull origin main  # Merges remote changes
+```
+But if you **really want to discard everything** and match the remote, `git reset --hard origin/main` is the way.  
+
+Would you like to verify the remote state before resetting? You can check differences with:
+```bash
+git log --oneline origin/main  # See remote commits
+git log --oneline HEAD         # See local commits
+```
+
+
 If you want to **roll back to the last committed version** (the state of your last `git commit` before any unpushed changes), follow these steps:
 
 ### **1. Check Your Commit History**
