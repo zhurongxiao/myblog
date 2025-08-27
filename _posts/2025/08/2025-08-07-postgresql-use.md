@@ -16,30 +16,17 @@ ssh ma "sudo -u postgres psql -d user_comments"
 ```
 
 **delete database**
-- first into console
-  
-```
-  psql -U postgres -h localhost
-```
 
-- Ternubate all active connections to the database:
+- Release all active connections to the database and drop the database:
 
 ```
-SELECT pg_terminate_backend(pg_stat_activity.pid)
-FROM pg_stat_activity
-WHERE pg_stat_activity.datname = 'user_comments'
-  AND pid <> pg_backend_pid();  -- Don't kill your own session
+sudo -u postgres psql -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'video_txt'" -c "DROP DATABASE IF EXISTS video_txt;"
 ```
 
-- Now drop the database
-
-```
-  DROP DATABASE IF EXISTS user_comments;
-```
 
 
 - Create database
 ```
-  sudo -u postgres psql -c "CREATE DATABASE user_comments;"
+  sudo -u postgres psql -c "CREATE DATABASE video_txt;"
 ```
 
