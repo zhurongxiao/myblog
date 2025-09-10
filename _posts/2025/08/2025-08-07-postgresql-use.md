@@ -30,3 +30,22 @@ sudo -u postgres psql -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity
   sudo -u postgres psql -c "CREATE DATABASE video_txt;"
 ```
 
+
+### delete table
+  
+```
+PGPASSWORD="zz" psql -h localhost -p 5433 -U train_btc_v2_user -d train_btc_v2_db -c "DROP TABLE IF EXISTS ml_predictions CASCADE;"
+```
+
+
+### new table
+  
+```
+PGPASSWORD="zz" psql -h localhost -p 5433 -U train_btc_v2_user -d train_btc_v2_db -f /home/debian/web/train-btc-v2/predict/sql/create_predictions_table.sql
+```
+
+### export csv
+  
+```
+PGPASSWORD="zz" psql -h localhost -p 5433 -U train_btc_v2_user -d train_btc_v2_db -c "\copy ml_predictions TO 'ml_predictions.csv' WITH CSV HEADER"
+```
