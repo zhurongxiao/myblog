@@ -30,3 +30,15 @@ categories: gather
 ./scripts/train.sh
 ```
 
+### return
+  
+```
+rclone sync "r2:test/models" "/home/ecs-user/web/train-btc-v2/predict/models"  \
+        --create-empty-src-dirs \
+        --progress \
+        --stats=5s \
+        --timeout=30s \
+        --retries=3 \
+        --verbose
+```
+

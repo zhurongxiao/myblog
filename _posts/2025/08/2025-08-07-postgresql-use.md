@@ -32,6 +32,18 @@ sudo -u postgres psql -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity
 
 
 ### delete table
+
+- DELETE: Deletes only the data, pressrving the table structure and fields.
+  
+
+  
+
+```
+PGPASSWORD="zz" psql -h localhost -p 5433 -U train_btc_v2_user -d train_btc_v2_db -c "DELETE FROM ml_predictions_comprehensive;"
+```
+  
+- DROP TABLE: Deletes the entire table, including the structure and fields.  
+
   
 ```
 PGPASSWORD="zz" psql -h localhost -p 5433 -U train_btc_v2_user -d train_btc_v2_db -c "DROP TABLE IF EXISTS ml_predictions CASCADE;"
